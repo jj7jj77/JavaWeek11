@@ -1,0 +1,30 @@
+package javaclassweek11;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.Color;
+//works only with JColorPanel
+public class JDemoPaintComponent extends JFrame // frame the holds the panel
+{
+    //make two panels, two transparent pieces of paper
+   JColorPanel p1 = new JColorPanel(Color.RED);  //make it red from the constructor
+   JColorPanel p2 = new JColorPanel(Color.BLUE);  //make it blue  //the panels are not transparent anymore
+   public JDemoPaintComponent()  //setting up the appearance
+   {
+      setLayout(new BorderLayout());  //border layout
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      getContentPane().setBackground(Color.YELLOW); //background color is yellow, not grey anymore
+      add(p1, BorderLayout.EAST);  //add red to the right
+      add(p2, BorderLayout.SOUTH); //add blue to the bottom
+   }
+   //the colors are being the panels that exist there
+   public static void main(String[] args)
+   {
+      JDemoPaintComponent frame = new JDemoPaintComponent();
+      frame.setSize(150, 100);
+      frame.setVisible(true);
+   }
+}
+//the counter shows how many times the window was moved, resized... it calls the method repaint
+//Output:    //In paintComponent() method -- blue 1
+             //In paintComponent() method -- red 1
+             //In paintComponent() method -- blue 2
