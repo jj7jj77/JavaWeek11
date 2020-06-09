@@ -1,0 +1,29 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.Color;
+//graphics only no GUIs, its one program
+public class JDemoRectangles extends JFrame
+{
+   Container con = getContentPane();
+   public JDemoRectangles()
+   {
+      con.setBackground(Color.BLUE); //background
+      con.setLayout(new FlowLayout());
+   }
+   public void paint(Graphics gr) //graphics hand g or gr
+   {//constructor
+      super.paint(gr); //erase the board, start fresh
+      gr.setColor(Color.RED);  //marker is red
+      gr.fillRect(40, 40, 120, 120); //fill shape
+      gr.setColor(Color.YELLOW);  //marker is yellow
+      gr.fillRect(80, 80, 160, 160); //fill shapes
+      gr.clearRect(50, 60, 50, 50);  //erase the shape
+      gr.drawRect(50, 60, 50, 50);  //yellow rect, is hallow, just see the board
+   }
+   public static void main(String[] args)
+   {
+      JDemoRectangles frame = new JDemoRectangles();
+      frame.setSize(200, 200);
+      frame.setVisible(true);
+   }
+}
