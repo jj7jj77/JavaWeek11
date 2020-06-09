@@ -1,0 +1,44 @@
+package javaclassweek11;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.Color;
+//only works with JDemoPanelWithButton
+public class JPanelWithButton extends JPanel implements ActionListener //Graphics and interaction
+{
+   //variables
+   JButton button = new JButton("Press me"); 
+   Color color;
+   String colorString;
+   
+   public JPanelWithButton()
+   {
+      //constructor
+      color = Color.RED;
+      colorString = "red";
+      setBackground(color); //red
+      add(button); //pressMe
+      button.addActionListener(this);  //live
+   }
+   public void actionPerformed(ActionEvent e)
+   {
+      if(color.equals(Color.RED)) 
+      {
+         color = Color.BLUE;  
+         colorString = "blue";  //if color is red its going to make the color blue
+      }
+      else
+      {
+         color = Color.RED;
+         colorString = "red";  //if color is blue its going to make the color red
+      }
+      setBackground(color);  //when the button is presed it changed the background of the color
+   }
+   public void paintComponent(Graphics g)
+   {
+      super.paintComponent(g);  
+      g.drawString("The panel is " + colorString, 20, 80);  //20, 80 where to write "The panel is red/blue" at that location //drawstring: draw the panel of whatever the color is
+      g.drawString("The panel is " + colorString, 20, 100); //a line below
+      g.drawString("The panel is " + colorString, 40, 60);
+   }
+}
