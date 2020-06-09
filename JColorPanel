@@ -1,0 +1,27 @@
+package javaclassweek11;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.Color;
+//Only runs with JDemoPaintComonent
+public class JColorPanel extends JPanel  //panel is a transparent box to put conponent box to put other components in it 
+                                         //also for painting to color on
+{
+   int count = 0;
+   String colorString;
+   public JColorPanel(Color color)
+   {
+      if(color.equals(Color.RED))
+         colorString = "red";  //the string, the panel is red
+      else
+         colorString = "blue"; // the panel is blue
+      setBackground(color); //set the background that is chosen // wont be transparent anymore
+   }
+   @Override
+   public void paintComponent(Graphics g)
+   {
+      super.paintComponent(g); // erase the board, start fresh
+      ++count;  //keeping the counter
+      System.out.println("In paintComponent() method -- " + colorString + " " + count);
+   }
+}
+//call it twice whent he window is minimized
