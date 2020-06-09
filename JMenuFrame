@@ -1,0 +1,64 @@
+package javaclassweek11;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.Color;
+
+public class JMenuFrame extends JFrame implements ActionListener
+{
+   private JMenuBar mainBar = new JMenuBar();  //1 mennu bar
+   private JMenu menu1 = new JMenu("File"); //menu 1: file
+   private JMenu menu2 = new JMenu("Colors"); //menu 2: colors
+   private JMenuItem exit = new JMenuItem("Exit"); //within each menu: in file
+   private JMenu bright = new JMenu("Bright"); //within each menu: in colors: submenu: good idea but dont overdo it
+   private JMenuItem dark = new JMenuItem("Dark"); //
+   private JMenuItem white = new JMenuItem("White");
+   private JMenuItem pink = new JMenuItem("Pink");  //submenu within bright
+   private JMenuItem yellow = new JMenuItem("Yellow");
+   private JLabel label = new JLabel("Hello");
+   public JMenuFrame()
+   {//constructor of menu
+      setTitle("Menu Demonstration");
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      setLayout(new FlowLayout());
+      setJMenuBar(mainBar);
+      mainBar.add(menu1); //will be at the top
+      mainBar.add(menu2); 
+      menu1.add(exit); //file: one item
+      menu2.add(bright); //colors: submenu  //order important
+      menu2.add(dark);
+      menu2.add(white);
+      bright.add(pink);
+      bright.add(yellow);
+      exit.addActionListener(this); //add listener to exit: does when clicked: is live
+      dark.addActionListener(this);
+      white.addActionListener(this);
+      pink.addActionListener(this);
+      yellow.addActionListener(this);
+      add(label);
+      label.setFont(new Font("Arial", Font.BOLD, 26));
+   }
+   public void actionPerformed(ActionEvent e)
+   {
+      Object source = e.getSource(); //what is clicked //5 live item: which one is clicked
+      Container con = getContentPane();
+      if(source == exit) //if clicked on exit do this..
+         System.exit(0); 
+      else if(source == dark)
+         con.setBackground(Color.BLACK);
+      else if(source == white)
+         con.setBackground(Color.WHITE);
+      else if(source == pink)
+         con.setBackground(Color.PINK);
+      else con.setBackground(Color.YELLOW);
+   }
+
+   public static void main(String[] args)
+   {
+      JMenuFrame mFrame = new JMenuFrame();
+      final int WIDTH = 250;
+      final int HEIGHT = 200;
+      mFrame.setSize(WIDTH, HEIGHT);
+      mFrame.setVisible(true);
+   }
+}
