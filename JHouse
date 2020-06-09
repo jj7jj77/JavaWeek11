@@ -1,0 +1,30 @@
+package cw11;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.Color;
+public class JHouse extends JPanel
+{
+   @Override
+   public void paintComponent(Graphics gr)
+   {
+      super.paintComponent(gr);
+      //house
+      gr.setColor(Color.RED);  //square of house
+      gr.drawRect(100, 100, 100, 100);  //square w=h
+      gr.setColor(Color.BLUE);  //roof of house
+      gr.drawLine(100,100,150,50);
+      gr.drawLine(150, 50, 200, 100);
+      //tree
+      gr.setColor(Color.BLACK);   //for trunk(stump) of tree  //no brown
+      gr.fillRect(250, 150, 20, 50);
+      gr.setColor(Color.GREEN);  //for tree
+      gr.fillOval(220, 50, 80, 120);
+   }
+   public static void main(String[] args)
+   {
+      JFrame frame = new JFrame();
+      frame.add(new JHouse());
+      frame.setSize(300, 300);
+      frame.setVisible(true);
+   }
+}
