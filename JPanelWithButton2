@@ -1,0 +1,27 @@
+package javaclassweek11;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+//only works with JDemoPanelWithButton2
+//not using a label, using G.DrawString
+public class JPanelWithButton2 extends JPanel implements ActionListener
+{
+   JButton button = new JButton("Press me");
+   int count = 0;
+   public JPanelWithButton2()
+   {
+      add(button);
+      button.addActionListener(this);
+   }
+   public void actionPerformed(ActionEvent e)
+   {  
+      ++count;
+      repaint();
+   }
+   public void paintComponent(Graphics g)
+   {
+      super.paintComponent(g);
+      g.drawString("The count is " + count, 20, 80);
+      //counts how many times you clicked.each time you clicked the button it adds one to the counter, +1, then displays the counter 
+   }
+}
