@@ -1,0 +1,16 @@
+import javax.swing.*;
+import java.awt.*;
+public class JFontPanel extends JPanel
+{
+   Font fancyFont = new Font("Serif", Font.ITALIC, 40);  //name of font, size and effect
+   Font fancyFont2 = new Font("Serif", Font.ITALIC, 40);  //can have as name fonts
+   @Override
+   public void paintComponent(Graphics g)
+   {
+      super.paintComponent(g);
+      g.setFont(fancyFont);
+      g.setFont(fancyFont2);
+      g.drawString("Hello", 20, 80);
+      g.drawString("Goodbye", 30, 60);  //member to change the coodinates(the location)
+   }
+}
